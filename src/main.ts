@@ -15,8 +15,6 @@ import { animateCamera } from './components/helpers';
 let currentLaneIndex = 1;
 let targetPositionX = lanes[currentLaneIndex];
 let isGameStarted = false;
-let isAnimateCamera = false;
-
 
 // Creating light
 const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -105,7 +103,6 @@ hammer.on('swiperight', () => {
 canvas.addEventListener('pointerdown', () => {
     if (!isGameStarted) {
         isGameStarted = true;
-        isAnimateCamera = true;
         scene.remove(tuturialGroup);
         character.playAnimation('Run');
         brainManager.startSpawning();

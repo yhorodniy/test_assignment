@@ -8,13 +8,14 @@ export class Stickman {
     private loader: GLTFLoader;
     private stickman: THREE.Group | null;
     private animations: THREE.AnimationClip[];
-    private mixer: THREE.AnimationMixer;
+    private mixer: THREE.AnimationMixer | null;
 
     constructor(loader: GLTFLoader) {
         this.path = 'src/static/Stickman.glb';
         this.loader = loader;
         this.stickman = null;
         this.animations = [];
+        this.mixer = null;
     }
 
     public loadModel(characterGroup: THREE.Group): void {

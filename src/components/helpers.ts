@@ -14,7 +14,7 @@ export type ActionName = typeof ACTIONS[number];
 
 export interface PlayAnimation {
     animations: THREE.AnimationClip[],
-    mixer: THREE.AnimationMixer,
+    mixer: THREE.AnimationMixer | null,
     name: ActionName,
 };
 
@@ -22,7 +22,7 @@ export const playAnimation = ({animations, mixer, name}: PlayAnimation): void =>
     if (animations.length === 0) return;
 
     const clip = THREE.AnimationClip.findByName(animations, name);
-    if(clip) {
+    if(clip && mixer !== null) {
         const action = mixer.clipAction(clip);
         action.reset();
         action.play();
