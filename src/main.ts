@@ -54,13 +54,22 @@ const renderloop = () => {
     const currentX = characterGroup.position.x;
     characterGroup.position.x += (targetPositionX - currentX) * 0.1;
     
-    
     if (!isGameStarted) {
         const currentTime = clock.getElapsedTime();
         handSprite.position.x = 1.2 + Math.sin(currentTime * 1.5);
         handSprite.position.y = 1 + Math.sin(currentTime * 1.5) * 0.15;
     }
     if (isGameStarted) {
+
+        if (canvas.requestFullscreen) {
+            canvas.requestFullscreen();
+        } else if ((canvas as any).webkitRequestFullscreen) { // Для Safari
+            (canvas as any).webkitRequestFullscreen();
+        } else if ((canvas as any).mozRequestFullScreen) { // Для Firefox
+            (canvas as any).mozRequestFullScreen();
+        } else if ((canvas as any).msRequestFullscreen) { // Для IE/Edge
+            (canvas as any).msRequestFullscreen();
+        }
         animateCamera(delta);
         brainManager.update(delta, speed);
         brainManager.brainGroup.children.forEach(brain => {
