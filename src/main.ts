@@ -13,6 +13,8 @@ import { animateCamera } from './components/helpers';
 // Initial constants
 
 let currentLaneIndex = 1;
+let speed = 10;
+let brainsCounter = 0;
 let targetPositionX = lanes[currentLaneIndex];
 let isGameStarted = false;
 
@@ -60,12 +62,17 @@ const renderloop = () => {
     }
     if (isGameStarted) {
         animateCamera(delta);
-        brainManager.update(delta);
+        brainManager.update(delta, speed);
         brainManager.brainGroup.children.forEach(brain => {
             const distance = brain.position.distanceTo(characterGroup.position);
-            if (distance < 3.5) {
+            if (distance < 2) {
                 character.setColor(brain.userData.color);
                 brainManager.brainGroup.remove(brain);
+                brainsCounter ++;
+            }
+            if (brainsCounter === 5) {
+                brainsCounter = 0;
+                speed = Math.min(40, speed + 1)
             }
             if (brain.position.z === 0) {
                 brainManager.brainGroup.remove(brain);

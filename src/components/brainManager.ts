@@ -38,16 +38,16 @@ export class BrainManager {
 
         this.brainGroup.add(brainClone);
 
-        setTimeout(() => this.spawnBrain(), Math.random() * 2000);
+        setTimeout(() => this.spawnBrain(), Math.max(500, Math.random() * 1000));
     }
 
     public startSpawning(): void {
         this.spawnBrain();
     }
 
-    public update(delta: number): void {
+    public update(delta: number, speed: number): void {
         this.brainGroup.children.forEach((brain) => {
-            brain.position.z += delta * 10;
+            brain.position.z += delta * speed;
             if (brain.position.z > 10) {
                 this.brainGroup.remove(brain);
             }
