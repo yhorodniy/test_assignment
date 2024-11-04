@@ -14,3 +14,12 @@ export const characterGroup = new THREE.Group();
 export const brainGroup = new THREE.Group();
 export const tuturialGroup = new THREE.Group();
 scene.add(trackGroup, characterGroup, brainGroup, tuturialGroup);
+
+// Models
+export const PATH = {
+    brain: '/Brain.glb',
+    sticman: '/Stickman.glb',
+    track: '/TrackFloor.glb',
+    tutorialHand: '/tutorial_hand.png',
+    tutorialText: '/tutorial_swipe_to_start.png'
+}

@@ -1,6 +1,7 @@
 import { ActionName, PlayAnimation, playAnimation } from './helpers';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+import { PATH } from './configs';
 
 
 export class Stickman {
@@ -11,7 +12,7 @@ export class Stickman {
     private mixer: THREE.AnimationMixer | null;
 
     constructor(loader: GLTFLoader) {
-        this.path = 'src/static/Stickman.glb';
+        this.path = PATH.sticman;
         this.loader = loader;
         this.stickman = null;
         this.animations = [];

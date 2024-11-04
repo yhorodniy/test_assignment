@@ -5,7 +5,7 @@ import renderer from './components/renderer';
 import { Stickman } from './components/stickman';
 import { BrainManager } from './components/brainManager';
 import './style.css';
-import { characterGroup, clock, lanes, loader, scene, trackGroup, tuturialGroup } from './components/configs';
+import { characterGroup, clock, lanes, loader, PATH, scene, trackGroup, tuturialGroup } from './components/configs';
 import { handSprite } from './components/tutorials';
 import { animateCamera } from './components/helpers';
 
@@ -31,7 +31,7 @@ characterGroup.position.z = -10
 
 // Loading track
 loader.load(
-    'src/static/TrackFloor.glb',
+    PATH.track,
     (gltf) => {
         const track = gltf.scene;
         track.position.set(0, 0, 0);

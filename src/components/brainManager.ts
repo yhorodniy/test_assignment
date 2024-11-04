@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { colors, lanes } from './configs';
+import { colors, lanes, PATH } from './configs';
 
 export class BrainManager {
     private scene: THREE.Scene;
@@ -14,7 +14,7 @@ export class BrainManager {
         this.brainGroup = new THREE.Group();
         this.scene.add(this.brainGroup);
         
-        this.loader.load('src/static/Brain.glb', (gltf) => {
+        this.loader.load(PATH.brain, (gltf) => {
             this.brainModel = gltf.scene;
         });
     }
